@@ -14,7 +14,7 @@ from Products.Archetypes.Field import ImageField
 class ClippingImageField(ImageField):
     """Like default ImageField from Archetypes with different scaling behaviour.
     
-    Scales are clipped centered, the resulting image has almost (+/- 1 pixel 
+    Scales are clipped centered, the resulting image has almost (+/- 1 pixel) 
     the scale. 
     """
     
@@ -40,6 +40,7 @@ class ClippingImageField(ImageField):
             offset = (cheight - middlepart) / 2
             box = 0, int(round(offset)), cwidth, int(round(offset+middlepart))
             image =  image.crop(box) 
+        return image
 
     # method scale is copied from Products.Archetypes.Field.ImageField.scale
     # see License over there
@@ -48,7 +49,7 @@ class ClippingImageField(ImageField):
         size = int(w), int(h)    
         original_file=StringIO(data)
         image = PIL.Image.open(original_file)
-        self.crop(image, size)
+        image = self.crop(image, size)
         original_mode = image.mode
         if original_mode == '1':
             image = image.convert('L')
