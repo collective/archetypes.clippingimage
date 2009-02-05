@@ -18,12 +18,13 @@ class ClippingImageField(ImageField):
     the scale. 
     """
     
+    _properties = ImageField._properties.copy()    
         
     def crop(self, image, scale):        
         """Crop given image to scale.
         
         @param image: PIL Image instance
-        @param scale: tuple with (width, heigth)
+        @param scale: tuple with (width, height)
         """        
         cwidth, cheight = image.size
         cratio = float(cwidth) / float(cheight)    
@@ -47,7 +48,7 @@ class ClippingImageField(ImageField):
         size = int(w), int(h)    
         original_file=StringIO(data)
         image = PIL.Image.open(original_file)
-        image = self.crop(image, size)
+        self.crop(image, size)
         original_mode = image.mode
         if original_mode == '1':
             image = image.convert('L')
