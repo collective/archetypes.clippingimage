@@ -11,7 +11,6 @@ setup(name='archetypes.clippingimage',
       description=shortdesc,
       long_description=longdesc,
       classifiers=[
-            'Development Status :: 3 - Alpha',
             'License :: OSI Approved :: BSD License',
             'Operating System :: OS Independent',
             'Programming Language :: Python',
