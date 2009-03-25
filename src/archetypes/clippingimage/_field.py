@@ -46,7 +46,7 @@ class ClippingImageField(ImageField):
     # method scale is copied from Products.Archetypes.Field.ImageField.scale
     # see License over there
     def scale(self, data, w, h, default_format = 'PNG'):
-        """ scale image (with material from ImageTag_Hotfix)"""
+        """ scale image"""
         size = int(w), int(h)    
         original_file=StringIO(data)
         image = PIL.Image.open(original_file)

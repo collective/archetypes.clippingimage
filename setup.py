@@ -1,8 +1,8 @@
 from setuptools import setup, find_packages
 import sys, os
 
-version = '1.0'
-shortdesc ="image field with clipping support for archetypes."
+version = '1.1'
+shortdesc ="Image field with clipping support for Plone/Archetypes."
 longdesc = open(os.path.join(os.path.dirname(__file__), 'README.txt')).read()
 longdesc += open(os.path.join(os.path.dirname(__file__), 'LICENSE.txt')).read()
 
@@ -22,7 +22,7 @@ setup(name='archetypes.clippingimage',
       keywords='',
       author='Jens Klein',
       author_email='jens@bluedynamics.com',
-      url='',
+      url='https://svn.plone.org/svn/archetypes/MoreFieldsAndWidgets/archetypes.clippingimage',
       license='BSD',
       packages=find_packages('src'),
       package_dir = {'': 'src'},
