@@ -51,7 +51,8 @@ class ClippingImageField(ImageField):
         original_file=StringIO(data)
         image = PIL.Image.open(original_file)
         if size not in [self.sizes[name] for name in self.classic_crop]:
-            original_mode = image.mode
+            image = self.crop(image, size)
+        original_mode = image.mode
         if original_mode == '1':
             image = image.convert('L')
         elif original_mode == 'P':
