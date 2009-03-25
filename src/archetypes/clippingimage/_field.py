@@ -19,7 +19,8 @@ class ClippingImageField(ImageField):
     """
     
     _properties = ImageField._properties.copy()    
-        
+    _properties.update({'classic_crop': []})
+            
     def crop(self, image, scale):        
         """Crop given image to scale.
         
@@ -49,8 +50,8 @@ class ClippingImageField(ImageField):
         size = int(w), int(h)    
         original_file=StringIO(data)
         image = PIL.Image.open(original_file)
-        image = self.crop(image, size)
-        original_mode = image.mode
+        if size not in [self.sizes[name] for name in self.classic_crop]:
+            original_mode = image.mode
         if original_mode == '1':
             image = image.convert('L')
         elif original_mode == 'P':
