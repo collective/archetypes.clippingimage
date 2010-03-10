@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import sys, os
 
-version = '1.2-dev'
+version = '1.2'
 shortdesc ="Image field with clipping support for Plone/Archetypes."
 longdesc = open(os.path.join(os.path.dirname(__file__), 'README.txt')).read()
 longdesc += open(os.path.join(os.path.dirname(__file__), 'LICENSE.txt')).read()
