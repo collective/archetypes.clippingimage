@@ -12,6 +12,8 @@ Same with ``ClippingImageField`` results in a 200x200 image! It centers the
 image horizontal or vertical and tries to keep as much as possible from the
 original.
 
+Tested with Plone 3.3.x and Plone 4.
+
 ======
 Usage:
 ======
@@ -19,23 +21,29 @@ Usage:
 Specify the sizes as documented for the classic Archetypes ImageField. If you
 want specific scales to not get clipped, add a field-property
 ``classic_crop=['image_large','other_scale']``. It expects a list of scale
-names to exclude from clipping
+names to exclude from clipping.
+
+Since version 1.2 dont forget to include the configure.zcml in your setup.  
 
 =========
 Copyright
 =========
 
-written by Jens W. Klein, BlueDynamics Alliance, Klein & Partner KEG, Austria
+written by Jens W. Klein, BlueDynamics Alliance, Klein & Partner KG, Austria
 http://bluedynamics.com
 
 =========
 Changelog
 =========
 
-after 1.1.1
------------
+1.2
+---
+
+- make plone.app.imaging and plone.app.blob aware. Works now with Plone 4.
+  [jensens]
 
 - sizes can be a callable or a dictionary (instance method not supported)
 
   background: plone.app.imaging uses the sizes defined in imaging_properties in case sizes is a dictionary.
   so you need to define sizes via a callable to make your custom sizes take effect.
+  [frisi]
