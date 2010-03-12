@@ -1,6 +1,6 @@
 import PIL
 from StringIO import StringIO
-
+from Products.CMFPlone.utils import safe_hasattr
 def crop(image, scale):
     """Crop given image to scale.
 
@@ -33,8 +33,10 @@ def scale(instance, data, w, h, default_format = 'PNG'):
     image = PIL.Image.open(original_file)
     #does not work for sizes='inscanteMethod' since we don't have an instance here
     availableSizes = instance.getAvailableSizes(None)
-    if size not in [availableSizes[name] for name in instance.classic_crop]:
-        image = crop(image, size)
+
+    if safe_hasattr(instance, 'crop_scales'):
+        if size in [availableSizes[name] for name in instance.crop_scales]:
+            image = crop(image, size)
     original_mode = image.mode
     if original_mode == '1':
         image = image.convert('L')

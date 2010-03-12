@@ -1,0 +1,14 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:monkey="http://namespaces.plone.org/monkey">
+
+    <include package="collective.monkeypatcher" />
+
+    <monkey:patch
+        description="Add support for cropping "
+        class="Products.Archetypes.Field.ImageField"
+        original="scale"
+        replacement=".utils.scale"
+        />
+
+</configure>

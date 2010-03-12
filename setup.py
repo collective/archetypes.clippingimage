@@ -17,7 +17,7 @@ setup(name='archetypes.clippingimage',
             'Framework :: Zope2',
             'Framework :: Plone',
             'Intended Audience :: Developers',
-            'Topic :: Software Development :: Libraries :: Python Modules'        
+            'Topic :: Software Development :: Libraries :: Python Modules'
       ], # Get strings from http://pypi.python.org/pypi?%3Aaction=list_classifiers
       keywords='',
       author='Jens Klein',
@@ -32,6 +32,7 @@ setup(name='archetypes.clippingimage',
       install_requires=[
           'setuptools',
           'Products.Archetypes',
+          'collective.monkeypatcher',
           # -*- Extra requirements: -*
       ],
       )

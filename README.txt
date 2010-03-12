@@ -23,7 +23,25 @@ want specific scales to not get clipped, add a field-property
 ``classic_crop=['image_large','other_scale']``. It expects a list of scale
 names to exclude from clipping.
 
-Since version 1.2 dont forget to include the configure.zcml in your setup.  
+Since version 1.2 dont forget to include the configure.zcml in your setup.
+
+
+By including `patch.zcml` in your package `archetypes.clippingimage` allows you to patch
+`Products.Archetypes.Field.ImageField` so it is able to generate cropped scales.
+
+You can define which scales shall be cropped by adding a property ``crop_scales`` to your ImageField::
+
+    ImageField('image',
+        sizes= {'large'   : (768, 768),
+                'preview' : (400, 400),
+                'listing' :  (16, 16),
+                },
+        crop_scales = ['listing'],
+        ...
+
+Note that if you want to patch ATCTImage and have `plone.app.imaging` installed you need
+to patch `plone.app.blob.subtypes.image`.
+
 
 =========
 Copyright
@@ -46,4 +64,7 @@ Changelog
 
   background: plone.app.imaging uses the sizes defined in imaging_properties in case sizes is a dictionary.
   so you need to define sizes via a callable to make your custom sizes take effect.
-  [frisi]
+  [fRiSi]
+
+- added monkeypatch for ImageField.scale to add croppingsupport to any ImageField
+  [jensens, fRiSi]
