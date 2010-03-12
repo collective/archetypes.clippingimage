@@ -26,25 +26,25 @@ def crop(image, scale):
 
 # method scale is copied from Products.Archetypes.Field.ImageField.scale
 # see License over there
-def scale(instance, data, w, h, default_format = 'PNG'):        
+def scale(instance, data, w, h, default_format = 'PNG'):
     """ scale image"""
     size = int(w), int(h)
     original_file=StringIO(data)
     image = PIL.Image.open(original_file)
     #does not work for sizes='inscanteMethod' since we don't have an instance here
-    availableSizes = self.getAvailableSizes(None)
-    if size not in [availableSizes[name] for name in self.classic_crop]:
+    availableSizes = instance.getAvailableSizes(None)
+    if size not in [availableSizes[name] for name in instance.classic_crop]:
         image = crop(image, size)
     original_mode = image.mode
     if original_mode == '1':
         image = image.convert('L')
     elif original_mode == 'P':
         image = image.convert('RGBA')
-    image.thumbnail(size, self.pil_resize_algo)
+    image.thumbnail(size, instance.pil_resize_algo)
     format = image.format and image.format or default_format
     if original_mode == 'P' and format == 'GIF':
         image = image.convert('P')
     thumbnail_file = StringIO()
-    image.save(thumbnail_file, format, quality=self.pil_quality)
+    image.save(thumbnail_file, format, quality=instance.pil_quality)
     thumbnail_file.seek(0)
     return thumbnail_file, format.lower()
