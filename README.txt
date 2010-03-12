@@ -50,6 +50,8 @@ Copyright
 written by Jens W. Klein, BlueDynamics Alliance, Klein & Partner KG, Austria
 http://bluedynamics.com
 
+Contributions Harald Friesnegger and Peter Holzer.
+
 =========
 Changelog
 =========
