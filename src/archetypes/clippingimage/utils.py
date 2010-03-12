@@ -35,8 +35,10 @@ def scale(instance, data, w, h, default_format = 'PNG'):
     availableSizes = instance.getAvailableSizes(None)
 
     if safe_hasattr(instance, 'crop_scales'):
+        #if our field defines crop_scales let's see if the current sizes shall be cropped
         if size in [availableSizes[name] for name in instance.crop_scales]:
             image = crop(image, size)
+
     original_mode = image.mode
     if original_mode == '1':
         image = image.convert('L')
