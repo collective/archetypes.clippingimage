@@ -29,11 +29,11 @@ names to include into clipping.
 Patch
 =====
 
-By including ``patch.zcml`` in your package ``archetypes.clippingimage`` allows 
-you to patch ``Products.Archetypes.Field.ImageField`` so it is able to generate 
+By including ``patch.zcml`` in your package ``archetypes.clippingimage`` will
+patch ``Products.Archetypes.Field.ImageField`` so it is able to generate
 cropped scales.
 
-You can define which scales shall be cropped by adding a property ``crop_scales`` 
+You can define which scales shall be cropped by adding a property ``crop_scales``
 to your ImageField::
 
     ImageField('image',
@@ -44,7 +44,7 @@ to your ImageField::
         crop_scales = ['listing'],
         ...
 
-Note that if you want to use clipped images within ATCTImage and have 
+Note that if you want to use clipped images within ATCTImage and have
 ``plone.app.imaging`` installed you need to set a property ``crop_scales`` at
 ``plone.app.blob.subtypes.image.SchemaExtender.fields[0]``.
 
@@ -62,7 +62,7 @@ Copyright
 written by Jens W. Klein, BlueDynamics Alliance, Klein & Partner KG, Austria
 http://bluedynamics.com
 
-Contributions Harald Friesnegger and Peter Holzer.
+Contributions Harald Friessnegger and Peter Holzer.
 
 =========
 Changelog
