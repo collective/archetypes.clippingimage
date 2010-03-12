@@ -18,16 +18,20 @@ Tested with Plone 3.3.x and Plone 4.
 Usage:
 ======
 
+Field
+=====
+
 Specify the sizes as documented for the classic Archetypes ImageField. If you
-want specific scales to not get clipped, add a field-property
-``classic_crop=['image_large','other_scale']``. It expects a list of scale
-names to exclude from clipping.
+want specific scales to get clipped, add a field-property
+``crop_scales=['image_large','other_scale']``. It expects a list of scale
+names to include into clipping.
 
-Since version 1.2 dont forget to include the configure.zcml in your setup.
+Patch
+=====
 
-
-By including `patch.zcml` in your package `archetypes.clippingimage` allows you to patch
-`Products.Archetypes.Field.ImageField` so it is able to generate cropped scales.
+By including `patch.zcml` in your package ``archetypes.clippingimage`` allows 
+you to patch `Products.Archetypes.Field.ImageField` so it is able to generate 
+cropped scales.
 
 You can define which scales shall be cropped by adding a property ``crop_scales`` to your ImageField::
 
@@ -39,9 +43,16 @@ You can define which scales shall be cropped by adding a property ``crop_scales`
         crop_scales = ['listing'],
         ...
 
-Note that if you want to patch ATCTImage and have `plone.app.imaging` installed you need
-to patch `plone.app.blob.subtypes.image`.
+Note that if you want to use clipped images within ATCTImage and have 
+`plone.app.imaging` installed you need to set a property ``crop_scales`` at
+``plone.app.blob.subtypes.image.SchemaExtender.fields['image']``.
 
+Blob
+====
+
+In case of using the patch everythings fine. No further action needed. If you
+use the field, you need to include the ``blob.zcml`` to make the fields scales
+blobs.
 
 =========
 Copyright
@@ -56,7 +67,7 @@ Contributions Harald Friesnegger and Peter Holzer.
 Changelog
 =========
 
-1.2
+2.0
 ---
 
 - make plone.app.imaging and plone.app.blob aware. Works now with Plone 4.
