@@ -1,3 +1,6 @@
+import PIL
+from StringIO import StringIO
+
 def crop(image, scale):
     """Crop given image to scale.
 

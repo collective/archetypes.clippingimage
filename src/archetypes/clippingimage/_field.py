@@ -7,8 +7,6 @@
 __author__ = """Jens Klein <jens@bluedynamics.com>"""
 __docformat__ = 'plaintext'
 
-import PIL
-from StringIO import StringIO
 from Products.Archetypes.Field import ImageField
 from archetypes.clippingimage.utils import scale
 
