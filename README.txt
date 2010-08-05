@@ -68,6 +68,13 @@ Contributions Harald Friessnegger and Peter Holzer.
 Changelog
 =========
 
+2.1
+===
+
+- use the format of original image for computing the crop. the field
+  used to convert everything to png which resulted in relatively large files
+  [fRiSi]
+
 2.0
 ===
 

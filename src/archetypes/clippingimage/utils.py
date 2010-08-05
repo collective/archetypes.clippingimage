@@ -31,6 +31,7 @@ def scale(instance, data, w, h, default_format = 'PNG'):
     size = int(w), int(h)
     original_file=StringIO(data)
     image = PIL.Image.open(original_file)
+    format = image.format
     #does not work for sizes='inscanteMethod' since we don't have an instance here
     availableSizes = instance.getAvailableSizes(None)
 
@@ -45,7 +46,7 @@ def scale(instance, data, w, h, default_format = 'PNG'):
     elif original_mode == 'P':
         image = image.convert('RGBA')
     image.thumbnail(size, instance.pil_resize_algo)
-    format = image.format and image.format or default_format
+    format = format or default_format
     if original_mode == 'P' and format == 'GIF':
         image = image.convert('P')
     thumbnail_file = StringIO()
