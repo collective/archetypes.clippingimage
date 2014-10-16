@@ -11,4 +11,11 @@
         replacement=".utils.scale"
         />
 
+    <monkey:patch
+        description="Add support for cropping on newer plone sites"
+        module="plone.app.imaging.monkey"
+        original="scale"
+        replacement=".utils.plone_app_imaging_scale"
+        />
+
 </configure>

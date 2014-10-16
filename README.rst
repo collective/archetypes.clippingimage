@@ -1,5 +1,11 @@
 Image field for ``Archetypes`` with different behavior at time of scaling.
 
+.. ATTENTION:: this package is no longer supported, you might want to have a
+   look at `plone.app.imagecropping`__ as an alternative
+
+   .. __: https://pypi.python.org/pypi/plone.app.imagecropping
+
+
 ============
 Introduction
 ============
@@ -12,7 +18,7 @@ Same with ``ClippingImageField`` results in a 200x200 image! It centers the
 image horizontal or vertical and tries to keep as much as possible from the
 original.
 
-Tested with Plone 3.3.x and Plone 4.
+Tested with Plone 3.3.x and Plone 4.3
 
 ======
 Usage:
@@ -67,6 +73,13 @@ Contributions Harald Friessnegger and Peter Holzer.
 =========
 Changelog
 =========
+
+3.0 (unreleased)
+================
+
+- make automatic cropping of images work on plone 4.2 and 4.3 (by monkey
+  patching the monkey patch of plone.app.imaging)
+  [fRiSi]
 
 2.1
 ===
