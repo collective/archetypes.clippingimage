@@ -79,6 +79,9 @@ Changelog
 
 - make automatic cropping of images work on plone 4.2 and 4.3 (by monkey
   patching the monkey patch of plone.app.imaging)
+
+  scales accessed via image/@@images/image/thumb to not get cropped.
+  this just works for image/image_thumb
   [fRiSi]
 
 2.1
