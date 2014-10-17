@@ -1,6 +1,8 @@
 import PIL
 from StringIO import StringIO
 from Products.CMFPlone.utils import safe_hasattr
+from plone.app.imaging.utils import getQuality
+
 def crop(image, scale):
     """Crop given image to scale.
 
@@ -14,22 +16,22 @@ def crop(image, scale):
     if cratio > tratio:
         middlepart = cheight * tratio
         offset = (cwidth - middlepart) / 2
-        box = int(round(offset)), 0, int(round(offset+middlepart)), cheight
+        box = int(round(offset)), 0, int(round(offset + middlepart)), cheight
         image = image.crop(box)
     if cratio < tratio:
         middlepart = cwidth / tratio
         offset = (cheight - middlepart) / 2
-        box = 0, int(round(offset)), cwidth, int(round(offset+middlepart))
-        image =  image.crop(box)
+        box = 0, int(round(offset)), cwidth, int(round(offset + middlepart))
+        image = image.crop(box)
     return image
 
 
 # method scale is copied from Products.Archetypes.Field.ImageField.scale
 # see License over there
-def scale(instance, data, w, h, default_format = 'PNG'):
+def scale(instance, data, w, h, default_format='PNG'):
     """ scale image"""
     size = int(w), int(h)
-    original_file=StringIO(data)
+    original_file = StringIO(data)
     image = PIL.Image.open(original_file)
     format = image.format
     #does not work for sizes='inscanteMethod' since we don't have an instance here
