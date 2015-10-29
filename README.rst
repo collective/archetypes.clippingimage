@@ -40,6 +40,10 @@ patch ``Products.Archetypes.Field.ImageField`` so it is able to generate
 cropped scales.
 
 You can define which scales shall be cropped by adding a property ``crop_scales``
+
+.. image:: https://badges.gitter.im/Join%20Chat.svg
+   :alt: Join the chat at https://gitter.im/collective/archetypes.clippingimage
+   :target: https://gitter.im/collective/archetypes.clippingimage?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
 to your ImageField::
 
     ImageField('image',
